@@ -1,0 +1,43 @@
+yaml_version: 6
+
+project:
+  title: "PM32 Multiplier"
+  author: "Tanya Sharma"
+  description: "Sequential PM32 multiplier using a serial-parallel multiplier design"
+  language: "Verilog"
+  clock_hz: 1000000
+  tiles: "1x1"
+  top_module: "tt_um_tanya_pm32"
+
+  source_files:
+    - "project.v"
+    - "pm32.v"
+    - "spm.v"
+
+pinout:
+  ui[0]: "start and multiplier bit 0"
+  ui[1]: "multiplier bit 1"
+  ui[2]: "multiplier bit 2"
+  ui[3]: "multiplier bit 3"
+  ui[4]: "multiplier bit 4"
+  ui[5]: "multiplier bit 5"
+  ui[6]: "multiplier bit 6"
+  ui[7]: "multiplier bit 7"
+
+  uo[0]: "product bit 0"
+  uo[1]: "product bit 1"
+  uo[2]: "product bit 2"
+  uo[3]: "product bit 3"
+  uo[4]: "product bit 4"
+  uo[5]: "product bit 5"
+  uo[6]: "product bit 6"
+  uo[7]: "product bit 7"
+
+  uio[0]: "done output"
+  uio[1]: "unused"
+  uio[2]: "unused"
+  uio[3]: "unused"
+  uio[4]: "unused"
+  uio[5]: "unused"
+  uio[6]: "unused"
+  uio[7]: "unused"

@@ -16,24 +16,30 @@ module tt_um_tanya_pm32 (
     input  wire       rst_n
 );
 
-  wire [3:0] A;
-  wire [3:0] B;
-  wire [7:0] product;
+  wire rst;
+  wire start;
+  wire done;
+  wire [63:0] product;
 
-  assign A = ui_in[3:0];
-  assign B = ui_in[7:4];
+  assign rst = ~rst_n;
+  assign start = ui_in[0];
 
-  PM32 mult (
-      .A(A),
-      .B(B),
-      .P(product)
+  pm32 multiplier (
+      .clk(clk),
+      .rst(rst),
+      .start(start),
+      .mc({24'b0, uio_in}),
+      .mp({24'b0, ui_in}),
+      .p(product),
+      .done(done)
   );
 
-  assign uo_out  = product;
-  assign uio_out = 8'b00000000;
-  assign uio_oe  = 8'b00000000;
+  assign uo_out = product[7:0];
 
-  wire _unused = &{uio_in, ena, clk, rst_n, 1'b0};
+  assign uio_out = {7'b0, done};
+  assign uio_oe  = 8'b11111111;
+
+  wire _unused = &{ena, product[63:8], 1'b0};
 
 endmodule
 
