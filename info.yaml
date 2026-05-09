@@ -11,7 +11,8 @@ project:
 
   source_files:
     - "project.v"
-    - "PM32.v"
+    - "pm32.v"
+    - "spm.v"
 
 pinout:
   ui[0]: "A bit 0"
